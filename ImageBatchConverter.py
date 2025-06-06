@@ -1,7 +1,7 @@
 ﻿# pip install pillow
 
 from PIL import Image
-from Pathlib import Path
+from pathlib import Path
 
 Folder = Path("H:\\Test")
 
