@@ -1,4 +1,4 @@
-# pip install pillow
+ï»¿# pip install pillow
 
 from PIL import Image
 from Pathlib import Path
@@ -13,7 +13,7 @@ for jfif in Folder.rglob(From):
         img=Image.open(jfif)
         jpg = jfif.with_suffix(To)
         img.save(jpg, "JPEG")
-        jfif.unlink()  # ²¾°£­ìjfifÀÉ
-        print("ÂàÀÉ¦¨¥\ : "+jfif)
+        jfif.unlink()  # ç§»é™¤åŸjfifæª”
+        print("è½‰æª”æˆåŠŸ : "+jfif)
     except Exception as e:
-        print("ÂàÀÉ¥¢±Ñ : "+jfif+" e");
+        print("è½‰æª”å¤±æ•— : "+jfif+" e");
