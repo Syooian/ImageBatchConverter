@@ -4,13 +4,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>37d404ff-ead2-414c-870b-6e779b796cf0</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>FileSearch.py</StartupFile>
+    <StartupFile>ImageBatchConverter.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>ImageBatchConverter</Name>
     <RootNamespace>ImageBatchConverter</RootNamespace>
+    <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>

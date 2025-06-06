@@ -24,6 +24,9 @@ To = input("請輸入要轉換成什麼檔案類型 (e.g. jpg, gif, png)：").st
 for jfif in Folder.rglob(f"*.{From}"):
     try:
         img = Image.open(jfif)
+        if img.mode!= 'RGB':  # 確保影像是RGB模式，否則轉換可能會失敗
+            img = img.convert('RGB')
+
         jpg = jfif.with_suffix(f".{To}")
         img.save(jpg, "JPEG")
         jfif.unlink()  # 移除原jfif檔
