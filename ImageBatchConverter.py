@@ -4,6 +4,7 @@ from PIL import Image
 from pathlib import Path
 import tkinter as tk
 from tkinter import filedialog
+import datetime
 
 # 啟動 tkinter 並隱藏主視窗
 root = tk.Tk()
@@ -20,6 +21,15 @@ Folder = Path(folder_selected)
 # 讓使用者手動輸入副檔名（不需加點）
 From = input("輸入來源檔案的副檔名 (e.g. jpg, gif, png, jfif)： ").strip()
 To = input("請輸入要轉換成什麼檔案類型 (e.g. jpg, gif, png)：").strip()
+Delete = input("是否刪除原始檔案？(y/n)：").strip().lower()
+Log =input("是否記錄轉換過程？(y/n)：").strip().lower()
+LogArray=[]
+
+LogStr=""
+def ShowLog(Str):
+    LogStr="轉檔成功 : "+str(jfif)
+    LogArray.append(LogStr)
+    print(LogStr)
 
 for jfif in Folder.rglob(f"*.{From}"):
     try:
@@ -29,8 +39,19 @@ for jfif in Folder.rglob(f"*.{From}"):
 
         jpg = jfif.with_suffix(f".{To}")
         img.save(jpg, "JPEG")
-        jfif.unlink()  # 移除原jfif檔
+        if Delete == 'y':
+            jfif.unlink()  # 移除原jfif檔
         img.close() #釋放影像物件
-        print("轉檔成功 : "+str(jfif))
+
+        ShowLog("轉檔成功 : "+str(jfif))
     except Exception as e:
-        print("轉檔失敗 : "+str(jfif)+" E : "+str(e))
+        ShowLog("轉檔失敗 : "+str(jfif)+" E : "+str(e))
+
+#寫入記錄檔
+if Log == 'y':
+    log_file = Folder / f"Log_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+    with open(log_file, 'w', encoding='utf-8') as log:
+        log.write(f"轉換 {From} 到 {To} ，刪除原始檔案 : {'是' if Delete == 'y' else '否'}"+"\n")
+        for entry in LogArray:
+            log.write(entry + '\n')
+    print(f"轉換記錄已儲存至 {log_file}")
