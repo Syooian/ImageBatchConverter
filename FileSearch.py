@@ -10,10 +10,10 @@ root = tk.Tk()
 root.withdraw()
 
 # 彈出視窗讓使用者選擇資料夾
-folder_selected = filedialog.askdirectory(title="請選擇要轉換的資料夾")
+folder_selected = filedialog.askdirectory(title="請選擇要搜尋的資料夾")
 if not folder_selected:
     print("未選擇資料夾，程式結束。")
-    exit(1)
+    exit(0)
 
 Folder = Path(folder_selected)
 

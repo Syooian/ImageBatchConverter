@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>37d404ff-ead2-414c-870b-6e779b796cf0</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>ImageBatchConverter.py</StartupFile>
+    <StartupFile>FileSearch.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,6 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="FileSearch.py" />
     <Compile Include="ImageBatchConverter.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />

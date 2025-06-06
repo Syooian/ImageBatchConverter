@@ -13,7 +13,7 @@ root.withdraw()
 folder_selected = filedialog.askdirectory(title="請選擇要轉換的資料夾")
 if not folder_selected:
     print("未選擇資料夾，程式結束。")
-    exit(1)
+    exit(0)
 
 Folder = Path(folder_selected)
 
@@ -27,6 +27,7 @@ for jfif in Folder.rglob(f"*.{From}"):
         jpg = jfif.with_suffix(f".{To}")
         img.save(jpg, "JPEG")
         jfif.unlink()  # 移除原jfif檔
+        img.close() #釋放影像物件
         print("轉檔成功 : "+str(jfif))
     except Exception as e:
         print("轉檔失敗 : "+str(jfif)+" E : "+str(e))
