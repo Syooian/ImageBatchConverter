@@ -14,6 +14,6 @@ for jfif in Folder.rglob(From):
         jpg = jfif.with_suffix(To)
         img.save(jpg, "JPEG")
         jfif.unlink()  # 移除原jfif檔
-        print("轉檔成功 : "+jfif)
+        print("轉檔成功 : "+str(jfif))
     except Exception as e:
-        print("轉檔失敗 : "+jfif+" e");
+        print("轉檔失敗 : "+str(jfif)+" E : "+str(e));
