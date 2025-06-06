@@ -5,8 +5,9 @@ from pathlib import Path
 
 Folder = Path("H:\\Test")
 
-From = "jfif"
-To = "jpg"
+# 讓使用者手動輸入副檔名（不需加點）
+From = input("輸入來源檔案的副檔名 (e.g. jpg, gif, png, jfif)： ").strip()
+To = input("請輸入要轉換成什麼檔案類型 (e.g. jpg, gif, png)：").strip()
 
 for jfif in Folder.rglob(f"*.{From}"):
     try:
