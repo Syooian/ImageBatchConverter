@@ -2,8 +2,20 @@
 
 from PIL import Image
 from pathlib import Path
+import tkinter as tk
+from tkinter import filedialog
 
-Folder = Path("H:\\Test")
+# 啟動 tkinter 並隱藏主視窗
+root = tk.Tk()
+root.withdraw()
+
+# 彈出視窗讓使用者選擇資料夾
+folder_selected = filedialog.askdirectory(title="請選擇要轉換的資料夾")
+if not folder_selected:
+    print("未選擇資料夾，程式結束。")
+    exit(1)
+
+Folder = Path(folder_selected)
 
 # 讓使用者手動輸入副檔名（不需加點）
 From = input("輸入來源檔案的副檔名 (e.g. jpg, gif, png, jfif)： ").strip()
