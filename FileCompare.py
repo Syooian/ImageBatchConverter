@@ -19,7 +19,8 @@ Folder = Path(folder_selected)
 
 LogArray=[]
 
-Mode = input("模式選擇。1 : 列出即將被轉換的檔案。2 : 與轉換後的檔案比較").strip()
+print("模式選擇。1 : 列出即將被轉換的檔案。2 : 與轉換後的檔案比較：")
+Mode = input("請輸入：").strip()
 
 log_file = Folder.parent / f"Log_Compare_{Mode}.txt"
 
@@ -61,10 +62,5 @@ match Mode:
             for missing in MissingFiles:
                 missing_log.write(missing + '\n')
 
-        print(f"缺少的檔案已記錄至 {log_file}")
 
-
-
-
-
-print(f"轉換記錄已儲存至 {log_file}")
+print(f"記錄檔已儲存至 {log_file}")

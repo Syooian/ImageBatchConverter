@@ -25,11 +25,9 @@ Delete = input("是否刪除原始檔案？(y/n)：").strip().lower()
 Log =input("是否記錄轉換過程？(y/n)：").strip().lower()
 LogArray=[]
 
-LogStr=""
 def ShowLog(Str):
-    LogStr="轉檔成功 : "+str(jfif)
-    LogArray.append(LogStr)
-    print(LogStr)
+    LogArray.append("轉檔成功 : "+str(jfif))
+    #print(LogStr)
 
 for jfif in Folder.rglob(f"*.{From}"):
     try:
