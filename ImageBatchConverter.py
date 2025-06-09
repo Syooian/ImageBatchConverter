@@ -26,24 +26,30 @@ Log =input("是否記錄轉換過程？(y/n)：").strip().lower()
 LogArray=[]
 
 def ShowLog(Str):
-    LogArray.append("轉檔成功 : "+str(jfif))
+    LogArray.append(Str)
     #print(LogStr)
 
-for jfif in Folder.rglob(f"*.{From}"):
+for ImageFile in Folder.rglob(f"*.{From}"):
     try:
-        img = Image.open(jfif)
+        img = Image.open(ImageFile)
         if img.mode!= 'RGB':  # 確保影像是RGB模式，否則轉換可能會失敗
             img = img.convert('RGB')
 
-        jpg = jfif.with_suffix(f".{To}")
-        img.save(jpg, "JPEG")
+        ToPillow=""
+        match To:
+            case 'jpg' | 'jpeg':
+                ToPillow = 'JPEG'
+            case _:
+                ToPillow = To.upper()  # 其他格式直接使用大寫
+
+        img.save(ImageFile.with_suffix(f".{To}"), ToPillow)
         if Delete == 'y':
-            jfif.unlink()  # 移除原jfif檔
+            ImageFile.unlink()  # 移除原影像檔
         img.close() #釋放影像物件
 
-        ShowLog("轉檔成功 : "+str(jfif))
+        ShowLog("轉檔成功 : "+str(ImageFile))
     except Exception as e:
-        ShowLog("轉檔失敗 : "+str(jfif)+" E : "+str(e))
+        ShowLog("轉檔失敗 : "+str(ImageFile)+" E : "+str(e))
 
 #寫入記錄檔
 if Log == 'y':
